@@ -1,0 +1,140 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-image: url('../Imagens_design/bgcadastro_pessoas.png');
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .cadastro-box {
+        background-color: #FFF5E4;
+        padding: 30px;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1;
+    }
+
+
+    .cadastro-box h1 {
+        font-size: 30px;
+        color: #FF9F1C;
+        margin-bottom: 20px;
+        font-weight: bold;
+        text-shadow: 1px 1px #FFA07A;
+        font-family: Michegar;
+        letter-spacing: 2px;
+    }
+
+    .cadastro-box p {
+        font-size: 14px;
+        color: #FF8C00;
+        margin-bottom: 20px;
+        font-family: Opensans;
+    }
+
+    .cadastro-box label {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 5px;
+        color: #FF8C00;
+        text-align: left;
+        font-family: Opensans;
+    }
+
+    .cadastro-box input[type="text"],
+    .cadastro-box input[type="password"],
+    .cadastro-box input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 15px;
+        border: 1px solid #FF8C00;
+        margin-bottom: 15px;
+        font-size: 16px;
+        background-color: #FFE4C4;
+    }
+
+    .cadastro-box button {
+        width: 100%;
+        padding: 10px;
+        background-color: #FF8C00;
+        border: none;
+        border-radius: 10px;
+        color: #FFF;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-family: Opensans;
+    }
+
+    .cadastro-box button:hover {
+        background-color: #FF7F50;
+        transition-delay: 0.2s;
+    }
+
+
+    .container::before {
+        top: 30%;
+        left: 20%;
+    }
+
+    .container::after {
+        bottom: 30%;
+        right: 20%;
+        transform: rotate(-15deg);
+    }
+
+    /* Estilos responsivos */
+
+    @media (max-width: 480px) {
+        .cadastro-box h1 {
+            font-size: 18px;
+        }
+
+        .cadastro-box label {
+            font-size: 14px;
+        }
+
+        .cadastro-box input[type="text"],
+        .cadastro-box input[type="password"],
+        .cadastro-box input[type="email"] {
+            font-size: 14px;
+            padding: 6px;
+        }
+
+        .cadastro-box button {
+            font-size: 14px;
+            padding: 6px;
+        }
+    }
+
+    @font-face {
+        font-family: Michegar;
+        src: url('../fontes/Michegar.ttf');
+    }
+    @font-face {
+        font-family: opensans;
+        src: url('../fontes/OpenSans.ttf');
+    }
+    

@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url('../Imagens_design/bgsearch_add_del.png');
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 50px;
+    position: relative;
+}
+
+.card {
+    background-color: #FFF;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Garante que o botão fique na parte de baixo */
+}
+
+.card .icon {
+    font-size: 40px;
+    color: #A52A2A;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    font-size: 30px;
+    color: #A52A2A;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: Michegar;
+}
+
+.card p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    /* Permite que o parágrafo ocupe o espaço disponível */
+}
+
+.card button {
+    background-color: #FF8C00;
+    border: none;
+    border-radius: 15px;
+    color: #FFF;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Garante que o botão ocupe toda a largura do cartão */
+}
+
+
+
+.card button:hover {
+    background-color: #FF7F50;
+}
+
+/* Background paw prints */
+.container::before,
+.container::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: url('Imagens_design/patas.png');
+    /* Insira o caminho da imagem PNG das patas */
+    background-size: contain;
+    opacity: 0.5;
+}
+
+.container::before {
+    top: 10%;
+    left: 10%;
+}
+
+.container::after {
+    bottom: 10%;
+    right: 10%;
+}
+
+@font-face {
+    font-family: Michegar;
+    src: url('../fontes/Michegar.ttf');
+}
+
+@font-face {
+    font-family: opensans;
+    src: url('../fontes/OpenSans.ttf');
+}
+@media (max-width: 788px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .card h2 {
+        font-size: 16px;
+    }
+
+    .card p {
+        font-size: 12px;
+    }
+
+    .card button {
+        font-size: 12px;
+        padding: 6px;
+    }
+}

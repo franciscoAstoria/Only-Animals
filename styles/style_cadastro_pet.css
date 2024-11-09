@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url('../Imagens_design/bgcadastro_pet.png'); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffc299;
+    width: 800px;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Estilo do formulário */
+.form-container {
+    width: 60%;
+}
+
+.form-container h1 {
+    font-size: 40px;
+    color: #d67d3e;
+    font-family: Michegar;
+}
+
+.form-container label {
+    display: block;
+    font-size: 14px;
+    margin: 10px 0 5px;
+}
+
+.form-container input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #d67d3e;
+    background-color: #ffe6cc;
+    position: relative; 
+    z-index: 10;
+    font-family: Opensans;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #d67d3e;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Estilo da seção de foto */
+.photo-container {
+    width: 35%;
+    text-align: center;
+    color: #8b5e3c;
+}
+
+.photo-frame {
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Estilo para o botão de upload */
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #d67d3e;
+    color: white;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Estilo do campo de descrição */
+.photo-container label {
+    display: block;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.photo-container textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #d67d3e;
+    background-color: #ffe6cc;
+    resize: none;
+    margin-top: 5px;
+}
+
+
+@media (max-width: 480px) {
+
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-container {
+        width: 90%;
+    }
+
+    .photo-container {
+        width: 90%;
+    }
+
+    .container {
+        align-items: center;
+    }
+}
+
+@font-face {
+    font-family: Michegar;
+    src: url('../fontes/Michegar.ttf');
+}
+
+@font-face {
+    font-family: opensans;
+    src: url('../fontes/OpenSans.ttf');
+}
