@@ -386,3 +386,13 @@ button:hover {
     font-size: 18px;
   }
 }
+
+@font-face {
+  font-family: Michegar;
+  src: url("../fontes/Michegar.ttf");
+}
+
+@font-face {
+  font-family: opensans;
+  src: url("../fontes/OpenSans.ttf");
+}

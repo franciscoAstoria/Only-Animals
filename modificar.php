@@ -13,7 +13,7 @@ $db = "only_animals";
 echo "
 <header class='navbar'>
     <div class='navbar-container'>
-        <a href='menu.php' class='navbar-icon' title='Home'>🏠</a>
+        <a href='menu.php' class='navbar-icon header-icon' title='Home'>🏠</a>
         <div class='search-container'>
             <form action='modificar.php' method='post'>
                 <input type='text' placeholder='Pesquisar...' name='pesquisa'>
@@ -28,11 +28,11 @@ if (isset($b_pesquisar)) {
         header('location: modificar.php');
     } else {
         $id_usuario = $_SESSION['id'];
-        $consulta = "SELECT * FROM `pets` WHERE `nome` LIKE '%$pesquisa%' AND `dono` = '$id_usuario'";
+        $consulta = "SELECT * FROM `pets` WHERE `nome` LIKE '%$pesquisa%'";
         $dados = banco($server, $user, $password, $db, $consulta);
         while ($linha = $dados->fetch_assoc()) {
             echo "
-            <div class='pet-card card' style='margin-top:20px'>
+            <div class='pet-card card'>
                 <div class='foto'>
                     <img src='" . $linha['foto'] . "' alt='foto pet'>
                 </div>
@@ -58,7 +58,56 @@ if (isset($b_pesquisar)) {
                 </div>
             </div>";
         }
-        echo "<br/>";
+    }
+}
+
+if (isset($b_atualizar)) {
+    $consulta = "SELECT * FROM `pets` WHERE `id` = '$id_pet'";
+    $dados = banco($server, $user, $password, $db, $consulta);
+    while ($linha = $dados->fetch_assoc()) {
+        $_SESSION['id_pet'] = $linha['id'];
+        echo "
+        <div class='container'>
+            <div class='adicionar-informacoes'>
+                <div class='form-container'>
+                    <h1>Atualizar Pet</h1>
+                    <form action='modificar.php' method='post' enctype='multipart/form-data'>
+                        <label for='nome'>Nome</label>
+                        <input type='text' id='nome' name='nome' value='" . $linha['nome'] . "' required>
+
+                        <label for='idade'>Idade</label>
+                        <input type='text' id='idade' name='idade' value='" . $linha['idade'] . "' required>
+
+                        <label for='especie'>Espécie</label>
+                        <input type='text' id='especie' name='especie' value='" . $linha['especie'] . "' required>
+
+                        <label for='raca'>Raça</label>
+                        <input type='text' id='raca' name='raca' value='" . $linha['raca'] . "' required>
+
+                        <label for='sexo'>Sexo</label>
+                        <select id='sexo' name='sexo' required>
+                            <option value='masculino' " . ($linha['sexo'] == 'masculino' ? 'selected' : '') . ">Masculino</option>
+                            <option value='feminino' " . ($linha['sexo'] == 'feminino' ? 'selected' : '') . ">Feminino</option>
+                        </select>
+                </div>
+
+                <div class='photo-container'>
+                    <label for='fileUpload' class='custom-file-upload'>Escolher Foto do Pet</label>
+                    <input type='file' name='foto' id='fileUpload' accept='image/*' style='display: none;'>
+                    <div class='photo-frame'>
+                        <img id='preview' src='" . $linha['foto'] . "' alt='Pré-visualização da foto'>
+                    </div>
+                    <label for='descricao'>Descrição do seu pet</label>
+                    <textarea id='descricao' name='descricao' rows='4'>" . $linha['descricao'] . "</textarea>
+                </div>
+                <input type='hidden' name='id_pet' value='" . $linha['id'] . "'>
+            
+            </div>
+            
+            <input type='hidden' name='id_pet' value='" . $linha['id'] . "'>
+            <button type='submit' id='finalizar' name='b_finalizar'>Finalizar ➔</button>
+            </form>
+        </div>";
     }
 }
 
@@ -71,53 +120,13 @@ if (isset($b_deletar)) {
     unlink($caminho_foto);
 }
 
-if (isset($b_atualizar)) {
-    $consulta = "SELECT * FROM `pets` WHERE `id` = '$id_pet'";
-    $dados = banco($server, $user, $password, $db, $consulta);
-    while ($linha = $dados->fetch_assoc()) {
-        echo "
-<div class='container'>
-    <div class='adicionar-informacoes'>
-        <div class='form-container'>
-            <h1>Cadastro do Pet</h1>
-            <Form action='cadastro_pet.php' method='post' enctype='multipart/form-data'>
-                <label for='nome'>Nome</label>
-                <input type='text' id='nome' name='nome' value=" . $linha['nome'] . " placeholder='Digite o nome do pet' required>
-
-                <label for='idade'>Idade</label>
-                <input type='text' id='idade' name='idade' value=" . $linha['idade'] . " placeholder='Digite a idade do pet' required>
-
-                <label for='especie'>Espécie</label>
-                <input type='text' id='especie' name='especie' value=" . $linha['especie'] . " placeholder='Digite a espécie do pet' required>
-
-                <label for='raca'>Raça</label>
-                <input type='text' id='raca' name='raca' value=" . $linha['raca'] . " placeholder='Digite a raça do pet' required>
-
-                <label for='sexo'>Sexo</label>
-                <select id='sexo' name='sexo' value=" . $linha['sexo'] . " required>
-                    <option value='masculino'>Masculino</option>
-                    <option value='feminino'>Feminino</option>
-                </select>
-        </div>
-
-        <div class='photo-container'>
-            <label for='fileUpload' class='custom-file-upload'>Escolher Foto do Pet</label>
-            <input type='file' name='foto' id='fileUpload' accept='image/*' style='display: none;'>
-            <div class='photo-frame'>
-                <img id='preview' src='" . $linha[' foto'] . "' alt='Pré-visualização da foto' style='display: none; width: 100%; height: 100%; object-fit: cover; border-radius: 10px;'>
-    </div>
-    <label for='descricao' id='instrucao-descricao'>Descrição do seu pet</label>
-    <textarea id='descricao' name='descricao' value=" . $linha['descricao'] . " rows='4'></textarea>
-</div>
-<button type='submit' id='finalizar' name='b_finalizar'>Finalizar ➔</button>
-</Form>
-</div>";
-    }
+if (isset($b_finalizar)) {
+    $id_pet = $_SESSION['id_pet'];
+    $consulta = "UPDATE pets SET especie = '$especie', raca = '$raca', sexo = '$sexo', idade = '$idade', descricao = '$descricao', nome = '$nome' WHERE id = '$id_pet'";;
+    banco($server, $user, $password, $db, $consulta);
 }
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="pt-br">

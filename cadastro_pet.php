@@ -16,27 +16,20 @@ if (isset($b_cadastrar)) {
 
     $id = $_SESSION['id'];
     $consulta = "INSERT INTO pets ( `especie`, `raca`, `sexo`, `dono`, `idade`, `descricao`,`nome`) VALUES ( '$especie', '$raca', '$sexo', '$id', '$idade', '$descricao', '$nome')";
-    $banco =  new mysqli($server, $user, $password, $db);
-    $resultado = mysqli_query($banco, $consulta);
+    $banco = new mysqli($server, $user, $password, $db);
+    mysqli_query($banco, $consulta);
 
 
-    if ($resultado) {
+    $userId = mysqli_insert_id($banco);
 
-        $userId = mysqli_insert_id($banco);
+    $extensao = pathinfo($foto['name'], PATHINFO_EXTENSION);
+    $nomefoto = $userId . '.' . $extensao; // Ex: 123.jpg
+    $caminhofoto = "pictures/" . $nomefoto;
 
-        $extensao = pathinfo($foto['name'], PATHINFO_EXTENSION);
-        $nomefoto = $userId . '.' . $extensao; // Ex: 123.jpg
-        $caminhofoto = "pictures/" . $nomefoto;
+    if (move_uploaded_file($foto['tmp_name'], $caminhofoto)) {
 
-        if (move_uploaded_file($foto['tmp_name'], $caminhofoto)) {
-
-            $sqlUpdate = "UPDATE `pets` SET `foto` = '$caminhofoto' WHERE `id` = '$userId'";
-            mysqli_query($banco, $sqlUpdate);
-        } else {
-            echo "Erro ao salvar a foto.";
-        }
-    } else {
-        echo "Erro ao salvar o usuário.";
+        $sqlUpdate = "UPDATE `pets` SET `foto` = '$caminhofoto' WHERE `id` = '$userId'";
+        mysqli_query($banco, $sqlUpdate);
     }
 
     // Feche a conexão
