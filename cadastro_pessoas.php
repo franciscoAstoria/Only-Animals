@@ -20,10 +20,11 @@ if (isset($b_cadastrar)) {
     $consulta = "INSERT INTO `usuarios` (`email`, `senha`, `nome`, `cpf`, `telefone`, `endereco`) VALUES ('$email', '$senha', '$nome', '$cpf', '$telefone', '$endereco')";
     banco($server, $user, $password, $db, $consulta);
 
+    $userId = mysqli_insert_id($banco);
+    $_SESSION['id'] = $userId;
     $_SESSION['login'] = true;
     $_SESSION['email'] = $email;
     $_SESSION['senha'] = $senha;
-
 
     header('location: cadastro_pet.php');
     exit();

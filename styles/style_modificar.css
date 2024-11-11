@@ -1,242 +1,388 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-.card {
-    width: 100%; /* Make the dog card take full width */
-    max-width: 800px; /* Maximum width for the expanded card */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 body {
-    background-image: url('../Imagens_design/bgbusca_pets.png');
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  background-image: url("../Imagens_design/bgbusca_pets.png");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.navbar {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  background-color: #ffe5d0;
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-icon {
+  font-size: 24px;
+  color: #333;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.navbar-icon:hover {
+  color: #ff8c00;
+  transition: color 0.3s;
+}
+
+/* Search Container Styles */
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #ff8c42;
+  padding: 8px 12px;
+  border-radius: 20px;
+  transition: border-color 0.3s;
 }
 
 .header {
-    width: 100%;
-    max-width: 1000px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: #fff;
-}
-
-.header-icon {
-    font-size: 30px;
-    cursor: pointer;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .search-container {
-    display: flex;
-    align-items: center;
-    background-color: #ffe5d0;
-    padding: 8px 12px;
-    border-radius: 20px;
+  display: flex;
+  align-items: center;
+  background-color: #ffe5d0;
+  padding: 8px 15px;
+  border-radius: 20px;
+  margin-left: 20px;
 }
 
 .search-container input {
-    border: none;
-    background: transparent;
-    padding: 8px;
-    outline: none;
-    font-size: 16px;
-    color: #333;
-    width: 200px;
+  border: none;
+  background: transparent;
+  padding: 8px;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  width: 250px;
 }
 
 .search-container button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 10px;
 }
 
 .main-content {
-    width: 500%;
-    max-width: 900px; /* Aumenta a largura máxima dos cartões */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 20px;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
 }
 
 .pet-card {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-    margin-bottom: 20px;
-    gap: 20px; /* Espaço entre os elementos internos */
-    width: 100%; /* Ocupa toda a largura do contêiner */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  margin-bottom: 20px;
+  gap: 20px;
+  width: 100%;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.foto {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .action-buttons {
-    display: flex;
-    gap: 10px; /* Espaço entre os botões */
-    margin-left: 20px; /* Espaço entre a descrição e os botões */
-}
-
-
-.pet-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.pet-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-right: 20px;
-    background-color: #ff8c42;
-    font-size: 36px;
-    color: #fff;
+  display: flex;
+  gap: 10px;
+  margin-left: 20px;
 }
 
 .pet-info {
-    flex: 1;
+  flex: 1;
 }
 
 .pet-info h2 {
-    font-size: 20px;
-    color: #ff8c42;
-    margin-bottom: 5px;
+  font-size: 20px;
+  color: #ff8c42;
+  margin-bottom: 5px;
 }
 
 .pet-info p {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.4;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
 }
 
 .pet-description {
-    width: 160px;
-    background-color: #fff7f0;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 14px;
-    color: #666;
-    text-align: left;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.pet-description h3 {
-    font-size: 16px;
-    color: #ff8c42;
-    margin-bottom: 8px;
-}
-
-.pet-description p {
-    font-size: 13px;
-    color: #666;
-    line-height: 1.4;
+  background-color: #fff7f0;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #666;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 160px;
 }
 
 button {
-    padding: 5px;
-    background-color: #FF8C00;
-    border: none;
-    border-radius: 15px;
-    color: #FFF;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  padding: 8px 15px;
+  background-color: #ff8c00;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #e57600;
+}
+
+#sexo {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #d67d3e;
+  background-color: #ffe6cc;
+  font-family: Opensans;
+  font-size: 14px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Optional: Add a custom style for the option items */
+#sexo option {
+  background-color: #ffe6cc;
+  color: #8b5e3c;
+  padding: 10px;
+}
+
+/* Focus state for the select */
+#sexo:focus {
+  border-color: #d67d3e;
+  outline: none;
+}
+
+.container {
+  background-color: #fff5e4;
+  width: 800px;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.adicionar-informacoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+/* Estilo do formulário */
+.form-container {
+  width: 60%;
+}
+
+.form-container h1 {
+  font-size: 40px;
+  color: #d67d3e;
+  font-family: Michegar;
+}
+
+.form-container label {
+  display: block;
+  font-size: 14px;
+  margin: 10px 0 5px;
+}
+
+.form-container input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #d67d3e;
+  background-color: #ffe6cc;
+  position: relative;
+  z-index: 10;
+  font-family: Opensans;
+}
+
+#finalizar {
+  width: 100%;
+  padding: 10px;
+  background-color: #d67d3e;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.photo-frame {
+  width: 150px;
+  height: 150px;
+  background-color: black;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 120px;
+  overflow: hidden;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #d67d3e;
+  color: white;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 72px;
+  margin-bottom: 10px;
+}
+
+/* Estilo do campo de descrição */
+.photo-container {
+  width: 35%;
+  text-align: center;
+  color: #8b5e3c;
+  display: flex;
+  flex-direction: column;
+}
+
+#instrucao-descricao {
+  margin-top: 20px;
+}
+
+.photo-container textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #d67d3e;
+  background-color: #ffe6cc;
+  resize: none;
+  min-height: 150px;
+  max-height: 250px;
+  margin-top: 5px;
+  margin-bottom: 17px;
 }
 
 /* Media Queries for responsiveness */
 @media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 20px;
+  }
 
-    .search-container {
-        width: 100%;
-        margin-top: 10px;
-    }
+  .search-container {
+    width: 100%;
+    margin-top: 15px;
+    padding: 8px;
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-    .search-container input {
-        width: 100%;
-    }
+  .search-container input {
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 8px;
+  }
 
-    .main-content {
-        width: 100%;
-        padding: 10px;
-    }
+  .search-container button {
+    font-size: 18px;
+    align-self: flex-end;
+  }
 
-    .pet-card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .pet-card {
+    flex-direction: column;
+    padding: 20px;
+  }
 
-    .pet-image {
-        width: 60px;
-        height: 60px;
-        margin-right: 15px;
-    }
+  .foto {
+    width: 120px;
+    height: 120px;
+  }
 
-    .pet-info h2 {
-        font-size: 18px;
-    }
+  .pet-info h2 {
+    font-size: 18px;
+  }
 
-    .pet-description {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    button {
-        font-size: 16px;
-        padding: 8px;
-    }
+  .pet-info p {
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 480px) {
-    .header {
-        padding: 10px;
-    }
+  .navbar-container {
+    flex-direction: row;
+    justify-content: space-around;
+  }
 
-    .search-container input {
-        font-size: 14px;
-    }
+  .search-container {
+    padding: 6px;
+    border-radius: 15px;
+  }
 
-    .pet-card {
-        padding: 15px;
-    }
+  .navbar-icon {
+    font-size: 22px;
+  }
 
-    .pet-image {
-        width: 50px;
-        height: 50px;
-    }
+  .search-container input {
+    font-size: 13px;
+    max-width: 120px;
+  }
 
-    .pet-info h2 {
-        font-size: 16px;
-    }
-
-    .pet-description {
-        font-size: 12px;
-        padding: 10px;
-    }
-
-    button {
-        font-size: 14px;
-        padding: 65px;
-    }
+  .search-container button {
+    font-size: 18px;
+  }
 }

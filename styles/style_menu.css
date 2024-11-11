@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url('../Imagens_design/bgsearch_add_del.png');
+    background-image: url('../Imagens_design/bgmenu.png');
     background-position: center;
     display: flex;
     align-items: center;
@@ -31,6 +31,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 10;
     /* Garante que o botão fique na parte de baixo */
 }
 
@@ -66,12 +67,14 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
     width: 100%; /* Garante que o botão ocupe toda a largura do cartão */
+    z-index: 1000;
 }
 
 
 
 .card button:hover {
     background-color: #FF7F50;
+    z-index: 1000;
 }
 
 /* Background paw prints */

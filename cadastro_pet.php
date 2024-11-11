@@ -3,6 +3,8 @@
 include "function.php";
 extract($_POST);
 
+teste_login();
+
 #Variaveis de informações do banco
 $server = "localhost";
 $user = "root";
@@ -12,7 +14,8 @@ $db = "only_animals";
 if (isset($b_cadastrar)) {
     $foto = $_FILES['foto'];
 
-    $consulta = "INSERT INTO pets ( `especie`, `raca`, `sexo`, `dono`, `idade`, `descrição`, `status`, `nome`) VALUES ( '$especie', '$raca', '$sexo', '1', '$idade', '$descricao', '$status', '$nome')";
+    $id = $_SESSION['id'];
+    $consulta = "INSERT INTO pets ( `especie`, `raca`, `sexo`, `dono`, `idade`, `descricao`,`nome`) VALUES ( '$especie', '$raca', '$sexo', '$id', '$idade', '$descricao', '$nome')";
     $banco =  new mysqli($server, $user, $password, $db);
     $resultado = mysqli_query($banco, $consulta);
 
@@ -39,7 +42,7 @@ if (isset($b_cadastrar)) {
     // Feche a conexão
     mysqli_close($banco);
 
-    header('location: search_add_del.php');
+    header('location: menu.php');
 }
 ?>
 
@@ -54,28 +57,31 @@ if (isset($b_cadastrar)) {
 </head>
 
 <body>
-    <div class="container">
-        <div class="adicionar-informacoes">
-            <div class="form-container">
+    <div class='container'>
+        <div class='adicionar-informacoes'>
+            <div class='form-container'>
+                <div class='icon header-icon'>
+                    <a href='menu.php'>🏠</a>
+                </div>
                 <h1>Cadastro do Pet</h1>
                 <Form action="cadastro_pet.php" method="post" enctype="multipart/form-data">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" placeholder="Digite o nome do pet">
-
-                    <label for="status">Status</label>
-                    <input type="text" id="status" name="status" placeholder="Digite o nome do pet">
+                    <input type="text" id="nome" name="nome" placeholder="Digite o nome do pet" required>
 
                     <label for="idade">Idade</label>
-                    <input type="text" id="idade" name="idade" placeholder="Digite a idade do pet">
+                    <input type="text" id="idade" name="idade" placeholder="Digite a idade do pet" required>
 
                     <label for="especie">Espécie</label>
-                    <input type="text" id="especie" name="especie" placeholder="Digite a espécie do pet">
+                    <input type="text" id="especie" name="especie" placeholder="Digite a espécie do pet" required>
 
                     <label for="raca">Raça</label>
-                    <input type="text" id="raca" name="raca" placeholder="Digite a raça do pet">
+                    <input type="text" id="raca" name="raca" placeholder="Digite a raça do pet" required>
 
                     <label for="sexo">Sexo</label>
-                    <input type="text" id="sexo" name="sexo" placeholder="Digite o sexo do pet">
+                    <select id="sexo" name="sexo" required>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                    </select>
             </div>
 
             <div class="photo-container">

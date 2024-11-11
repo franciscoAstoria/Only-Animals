@@ -17,4 +17,22 @@ function banco($server, $user, $password, $db, $consulta)
 	$banco->close();
 	return $resultado;
 }
-?>
+
+function teste_login()
+{
+	if ((!isset($_SESSION['login'])) or ($_SESSION['login'] == false)) {
+		$_SESSION['login'] = false;
+		header('location: index.php');
+	} 
+	// else {
+	// 	// $id = $_SESSION['id'];
+	// 	// $consulta = "SELECT `senha`, `email` FROM `usuarios` WHERE `id` LIKE '$id'";
+	// 	// $resultado =  banco("localhost", "root", NULL, "usuarios", $consulta);
+		
+	// 	// 	$linha = $resultado->fetch_assoc();
+	// 	// 	$senha = $linha['senha'];
+	// 	// 	$email = $linha['email'];
+	// 	// 	if ($_SESSION['email'] == $email and $_SESSION['senha'] == $senha);
+	// 	}
+	}
+

@@ -13,6 +13,36 @@ body {
   min-height: 100vh;
 }
 
+/* Style for the Sexo select dropdown */
+
+#sexo {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #d67d3e;
+  background-color: #ffe6cc;
+  font-family: Opensans;
+  font-size: 14px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Optional: Add a custom style for the option items */
+#sexo option {
+  background-color: #ffe6cc;
+  color: #8b5e3c;
+  padding: 10px;
+}
+
+/* Focus state for the select */
+#sexo:focus {
+  border-color: #d67d3e;
+  outline: none;
+}
+
+
+
 .container {
   background-color: #fff5e4;
   width: 800px;
